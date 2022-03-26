@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from './cliente.service';
+import { Cliente } from './cliente';
 
 @Component({
   selector: 'app-clientes',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  clientes: Cliente[]=[];
+  constructor(private clienteService: ClienteService ) { }
+
 
   ngOnInit(): void {
+    this.clienteService.getClientes().subscribe(
+
+      clientes => this.clientes = clientes
+
+    );
+
+
+
+
   }
+
+  delete(cliente:Cliente):void{
+    //console.log("Listo para borrar")
+    this.clienteService.delete(cliente.cedula).subscribe(
+      res=>this.clienteService.getClientes().subscribe(
+        response=>this.clientes=response
+      )
+    );
+
+  }
+
+
+
 
 }
