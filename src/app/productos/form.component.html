@@ -1,0 +1,64 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+        <form ngNativeValidate (ngSubmit)="crear()">
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="apellido" class="col-form-label col-sm-2">Categoría</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" [(ngModel)]="producto.categoria" name="categoria" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2">Descripción:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" [(ngModel)]="producto.descripcion" name="descripcion" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2">Precio:</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" [(ngModel)]="producto.precio" name="precio" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2">Stock:</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" [(ngModel)]="producto.stock" name="stock" required>
+                </div>
+            </div>
+
+            <div class="form-group-row" *ngIf="!producto.id_producto else elseBlock">
+                <div class="col-sm-4">
+                    <button class="btn btn-primary" role="button">Crear</button>
+                </div>
+            </div>
+    
+            <ng-template #elseBlock>
+                <div class="form-group-row">
+                    <div class="col-sm-4">
+                       <button class="btn btn-primary" role="button" (click)="cargarProducto()">Actualizar Producto</button>
+                    </div>
+                </div>
+                <div class="form-group-row">
+                    <div class="col-sm-4">
+                       <button class="btn btn-primary" role="button" (click)="modificar()">Modificar Producto</button>
+                    </div>
+                </div>
+                
+            </ng-template>
+
+        </form>
+
+    </div>
+
+</div>
