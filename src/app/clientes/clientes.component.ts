@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from './cliente.service';
 import { Cliente } from './cliente';
+import { FormComponent } from './form.component';
 
 @Component({
   selector: 'app-clientes',
@@ -20,10 +21,9 @@ export class ClientesComponent implements OnInit {
 
     );
 
-
-
-
   }
+
+ 
 
   delete(cliente:Cliente):void{
     //console.log("Listo para borrar")

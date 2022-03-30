@@ -10,13 +10,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './clientes/form.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { PedidosService } from './pedidos/pedidos.service';
 
 const routes: Routes =[
 
   {path:'',redirectTo:'',pathMatch:'full'},
   {path:'clientes',component:ClientesComponent },
   {path: 'clientes/form', component:FormComponent},
-  {path: 'clientes/form/:id', component:FormComponent}
+  {path: 'clientes/form/:id', component:FormComponent},
+  {path: 'pedidos', component:PedidosComponent}
 
 ];
 
@@ -27,7 +30,9 @@ const routes: Routes =[
     HeaderComponent,
     FooterComponent,
     ClientesComponent,
+    PedidosComponent,
     FormComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ const routes: Routes =[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ClienteService],
+  providers: [ClienteService,PedidosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
