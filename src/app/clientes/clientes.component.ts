@@ -27,7 +27,7 @@ export class ClientesComponent implements OnInit {
 
   delete(cliente:Cliente):void{
     //console.log("Listo para borrar")
-    this.clienteService.delete(cliente.cedula).subscribe(
+    this.clienteService.delete(cliente.personaId).subscribe(
       res=>this.clienteService.getClientes().subscribe(
         response=>this.clientes=response
       )

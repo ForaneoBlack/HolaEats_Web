@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   cargar():void{
     this.activatedRouter.params.subscribe(
       c=>{
-        let id=c['id'];
+        let id=c['personaId'];
         if(id){
           this.clienteService.get(id).subscribe(
             cliente=>this.cliente=cliente
@@ -40,9 +40,7 @@ export class FormComponent implements OnInit {
       //console.log(this.cliente)
     }
 
-    public abrirForm():void{
-      const form = this.create ;
-    }
+   
 
   update():void{
     this.clienteService.update(this.cliente).subscribe(

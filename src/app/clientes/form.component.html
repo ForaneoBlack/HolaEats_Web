@@ -1,8 +1,16 @@
-<div class="card bg-dark text-white" id="form-cliente">
+<div class="card bg-dark text-white">
     <div class="card-header">{{titulo}}</div>
     <div class = "card-body">
 
  <form ngNativeValidate (ngSubmit) = "create()"  > 
+
+    <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">Cedula</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cedula" maxlength="10" [(ngModel)]="cliente.cedula" required/>
+        </div>
+    </div>
+
     <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
@@ -26,19 +34,36 @@
         </div>
     </div>
 
-        <div class="form-group-row" *ngIf="!cliente.cedula else elseBlock">
+    <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">telefono</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="telefono" [(ngModel)]="cliente.telefono" required/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Direccion</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control"  name="direccion" [(ngModel)]="cliente.direccion" required/>
+        </div>
+    </div>
+
+    
+
+    <div class="form-group-row" *ngIf="!cliente.personaId else elseBlock">
+        <div class="col-sm-6">
+            <button class="btn btn-primary" role="button">Crear</button>
+        </div>
+    </div>
+
+    <ng-template #elseBlock>
+        <div class="form-group-row">
             <div class="col-sm-6">
-                <button class="btn btn-primary" role="button">Crear</button>
+                <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+                
             </div>
         </div>
-
-        <ng-template #elseBlock>
-            <div class="form-group-row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
-                </div>
-            </div>
-        </ng-template>
+    </ng-template>
     </form>
     </div>
 </div>
