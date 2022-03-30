@@ -1,0 +1,91 @@
+<div class="card bg-dark text-white">
+<div class="card-header">{{titulo}}</div>
+<div class = "card-body">
+
+    <form ngNativeValidate (ngSubmit) = "create()">
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Cedula</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.cedula" name="cedula" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Nombre</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.nombre" name="nombre" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Apellido</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.apellido" name="apellido" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Correo</label>
+
+            <div class="col-sm-6">
+                <input type="email" class="form-control" [(ngModel)]="empleado.correo" name="correo" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Telefono</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.telefono" name="telefono" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Direccion</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.direccion" name="direccion" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="" class="col-form-label col-sm-2">Rol</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.rol" name="rol" required>
+            </div>
+        </div>
+
+        <div class="form-group row" *ngIf="!empleado.personaId else elseBlock">
+            <div class="col-sm-6">
+
+                <button class="btn btn-success" role="button">Crear</button>
+
+            </div>
+        </div>
+
+        <ng-template #elseBlock>
+            <div class="form-group-row">
+                <div class="col-sm-6">
+                    <button class="btn btn-warning" role="button" (click)='update()'>Editar</button>
+                </div>
+            </div>
+        </ng-template>
+
+
+    </form>
+
+</div>
+
+</div>
