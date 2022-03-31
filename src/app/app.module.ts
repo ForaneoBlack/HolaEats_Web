@@ -1,41 +1,38 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Directive, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ClientesComponent } from './clientes/clientes.component';
-import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './clientes/form.component';
-
-import {HttpClientModule} from '@angular/common/http';
-import { FormsModule} from '@angular/forms';
-
-
+import { AppComponent } from './app.component';
+import { ClienteService } from './clientes/cliente.service';
+import { ClientesComponent } from './clientes/clientes.component';
+import { Form1Component } from './clientes/form1.component';
+import { EmpleadoService } from './empleados/empleado.service';
+import { EmpleadosComponent } from './empleados/empleados.component';
+import { Form2Component } from './empleados/form2.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { PedidosService } from './pedidos/pedidos.service';
-
-
-import { EmpleadosComponent } from './empleados/empleados.component';
-import { EmpleadoService } from './empleados/empleado.service';
-import { Form2Component } from './empleados/form2.component';
+import { Form3Component } from './productos/form3.component';
+import { ProductoService } from './productos/producto.service';
+import { ProductosComponent } from './productos/productos.component';
 
 
 const routes: Routes =[
 
   {path:'',redirectTo:'',pathMatch:'full'},
   {path:'clientes',component:ClientesComponent },
-  {path: 'clientes/form', component:FormComponent},
-  {path: 'clientes/form/:personaId', component:FormComponent},
+  {path: 'clientes/form', component:Form1Component},
+  {path: 'clientes/form/:personaId', component:Form1Component},
 
   {path: 'pedidos', component:PedidosComponent},
 
   {path: 'empleados',component:EmpleadosComponent},
   {path: 'empleados/form2', component:Form2Component},
 
-  {path: 'pedidos', component:PedidosComponent}
-
+  {path: 'pedidos', component:PedidosComponent},
+  {path: 'productos', component:ProductosComponent}
 
 ];
 
@@ -47,13 +44,12 @@ const routes: Routes =[
     FooterComponent,
     ClientesComponent,
     PedidosComponent,
-    FormComponent,
-    FormComponent,
+    Form1Component,
     EmpleadosComponent,
     Form2Component,
-
     PedidosComponent,
-    FormComponent
+    ProductosComponent,
+    Form3Component
     
 
   ],
@@ -64,7 +60,7 @@ const routes: Routes =[
     RouterModule.forRoot(routes)
   ],
 
-  providers: [ClienteService,PedidosService],
+  providers: [ClienteService,PedidosService,ProductoService,EmpleadoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
