@@ -4,35 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ClienteService } from './clientes/cliente.service';
-import { ClientesComponent } from './clientes/clientes.component';
-import { Form1Component } from './clientes/form1.component';
-import { EmpleadoService } from './empleados/empleado.service';
-import { EmpleadosComponent } from './empleados/empleados.component';
-import { Form2Component } from './empleados/form2.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
-import { PedidosService } from './pedidos/pedidos.service';
-import { Form3Component } from './productos/form3.component';
-import { ProductoService } from './productos/producto.service';
-import { ProductosComponent } from './productos/productos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { SharedModule } from './shared/shared.module';
+
 
 
 const routes: Routes =[
 
-  {path:'',redirectTo:'',pathMatch:'full'},
-  {path:'clientes',component:ClientesComponent },
-  {path: 'clientes/form', component:Form1Component},
-  {path: 'clientes/form/:personaId', component:Form1Component},
-
-  {path: 'pedidos', component:PedidosComponent},
-
-  {path: 'empleados',component:EmpleadosComponent},
-  {path: 'empleados/form2', component:Form2Component},
-
-  {path: 'pedidos', component:PedidosComponent},
-  {path: 'productos', component:ProductosComponent}
+  {path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'login',component:LoginComponent },
+  {path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(x => x.DashboardModule)},
+  {path:'**',redirectTo:'login',pathMatch:'full' },
+  
+  
 
 ];
 
@@ -40,16 +25,7 @@ const routes: Routes =[
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    ClientesComponent,
-    PedidosComponent,
-    Form1Component,
-    EmpleadosComponent,
-    Form2Component,
-    PedidosComponent,
-    ProductosComponent,
-    Form3Component
+    LoginComponent
     
 
   ],
@@ -57,10 +33,13 @@ const routes: Routes =[
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+   SharedModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
+   
   ],
 
-  providers: [ClienteService,PedidosService,ProductoService,EmpleadoService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
