@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hola_eats": {
+    "Hola_Eats-2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hola_eats",
+            "outputPath": "dist/hola-eats-2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hola_eats:build:production"
+              "browserTarget": "Hola_Eats-2:build:production"
             },
             "development": {
-              "browserTarget": "hola_eats:build:development"
+              "browserTarget": "Hola_Eats-2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hola_eats:build"
+            "browserTarget": "Hola_Eats-2:build"
           }
         },
         "test": {
@@ -95,7 +95,6 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/my-style.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -104,5 +103,5 @@
       }
     }
   },
-  "defaultProject": "hola_eats"
+  "defaultProject": "Hola_Eats-2"
 }

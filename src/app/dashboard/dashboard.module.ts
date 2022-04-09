@@ -10,6 +10,11 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ProductosComponent } from './productos/productos.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { ImagenComponent } from './productos/imagen.component';
+import { SwiperModule, SwiperConfigInterface,
+  SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+
 
 
 @NgModule({
@@ -20,12 +25,16 @@ import { ProductosComponent } from './productos/productos.component';
     ClientesComponent,
     EmpleadosComponent,
     PedidosComponent,
-    ProductosComponent
+    ProductosComponent,
+    InicioComponent,
+    ImagenComponent
+  
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    SwiperModule
   ]
 })
 export class DashboardModule { }

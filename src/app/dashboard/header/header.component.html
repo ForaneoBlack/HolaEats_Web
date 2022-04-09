@@ -1,12 +1,10 @@
-<mat-toolbar color="primary">
-  <div>
+<mat-toolbar class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div >
     <a class="navbar-brand" href="#"
       ><img src="assets/Hola-Eats_Logo.png" width="90px" height="90px" />
     </a>
   </div>
-
-  <button mat-button routerLink="/dashboard">
-    <div>
+  <button mat-button routerLink="/dashboard/inicio">
       <svg
         width="38"
         height="50"
@@ -19,7 +17,6 @@
           fill="#DA3838"
         />
       </svg>
-    </div>
   </button>
   <button mat-button routerLink="/dashboard/pedidos">
     <svg
@@ -71,6 +68,20 @@
       />
     </svg>
   </button>
+  <button mat-button routerLink="/dashboard/empleados">
+    <svg
+      width="38"
+      height="50"
+      viewBox="0 0 58 70"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M57.2987 21V66.4755C57.3016 66.9351 57.2222 67.3909 57.0649 67.8168C56.9077 68.2426 56.6756 68.6303 56.3821 68.9576C56.0886 69.2849 55.7393 69.5454 55.3542 69.7242C54.9691 69.9031 54.5557 69.9968 54.1377 70H3.16098C2.32319 70 1.51966 69.6343 0.926954 68.9833C0.334247 68.3323 0.000843698 67.4492 0 66.528V3.472C0 1.5925 1.42928 0 3.18963 0H38.1896L57.2987 21ZM50.9322 24.5H35.0159V7H6.36652V63H50.9322V24.5ZM15.9163 17.5H25.4661V24.5H15.9163V17.5ZM15.9163 31.5H41.3824V38.5H15.9163V31.5ZM15.9163 45.5H41.3824V52.5H15.9163V45.5Z"
+        fill="#DA3838"
+      />
+    </svg>
+  </button>
   <span class="example-spacer"></span>
   <!-- <button mat-button routerLink="/dashboard">LogOut</button> -->
   <button
@@ -79,6 +90,6 @@
     routerLink="/"
     aria-label="Example icon-button with menu icon"
   >
-    <mat-icon>logout</mat-icon>
+    <mat-icon class="light">more_vert</mat-icon>
   </button>
 </mat-toolbar>

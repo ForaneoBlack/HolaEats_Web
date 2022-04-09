@@ -1,0 +1,101 @@
+<br>
+
+<div class="card bg-dark text-white" style="border-bottom: 10px; border-color:aliceblue;">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+
+        <form ngNativeValidate (ngSubmit)="create()">
+            
+            <!--<div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">IdProducto</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="id_producto" [(ngModel)]="producto.id_producto" required/>
+        </div>
+    </div>-->
+
+            <br>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="productos.nombre" required />
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Categoria</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="categoria" [(ngModel)]="productos.categoria" required />
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Descripcion</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="apellido" [(ngModel)]="productos.descripcion" required />
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Precio</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="precio" [(ngModel)]="productos.precio" required />
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Stock</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="stock" [(ngModel)]="productos.stock" required />
+                </div>
+            </div>
+
+            <br>
+
+            <br>
+
+
+            <div class="form-group-row" *ngIf="!productos.idProducto else elseBlock">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" style="height: 40px; width: 100px;">Crear</button>
+                    <button class="btn btn-danger" role="button" (click)="cancelar()" >Cancelar</button>
+                </div>
+            </div>
+
+            <ng-template #elseBlock>
+                <div class="form-group-row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+                        <button class="btn btn-danger" role="button" (click)="cancelar()" >Cancelar</button>
+                    </div>
+                </div>
+            </ng-template>
+
+        </form>
+        <form (ngSubmit)="onUpload()" novalidate enctype="multipart/form-data">
+            <div>
+                <input type="file" class="custom-file-input" id="imagen" #imagenInputFile
+                (change)="onFileChange($event)" accept="image/png, image/jpeg, image/gif">
+                <label class="custom-file-label" for="imagen">Elegir Imagen</label>
+            </div>
+            <div *ngIf="imagen" class="mt-5">
+                <h5>Vista Previa:</h5>
+                <div>
+                    <img class="image-thumbnail" style="max-width: 100px;" [src]="imagenMin">
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-between my-3">
+                <!-- <button type="submit" class="btn btn-outline-success" [disabled]="!imagen">Subir imagen</button> -->
+            </div>
+        </form>
+    </div>
+</div>
+<br>

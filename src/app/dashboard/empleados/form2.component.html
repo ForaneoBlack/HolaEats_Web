@@ -1,0 +1,65 @@
+<div class="card bg-dark text-white" style="border-bottom: 10px; border-color:aliceblue;">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+
+        <form ngNativeValidate (ngSubmit)="create()">
+            <mat-grid-list cols="2" rowHeight="300px">
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input type="text" name="cedula" matInput placeholder="Cedula"
+                                [(ngModel)]="Empleados.cedula" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" matInput placeholder="Nombre" name="nombre" [(ngModel)]="Empleados.nombre" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" matInput placeholder="Apellido" name="apellido" [(ngModel)]="Empleados.apellido" required />
+                        </mat-form-field>
+                        <mat-form-field> 
+                            <input type="email" matInput placeholder="Correo" name="correo" [(ngModel)]="Empleados.correo" required />
+                        </mat-form-field>
+                    </div>
+
+                </mat-grid-tile>
+
+            
+            <mat-grid-tile>
+                <div class="controles-container">
+                <mat-form-field> 
+                    <input type="text" matInput placeholder="Telefono" name="Telefono" [(ngModel)]="Empleados.telefono" required />
+                </mat-form-field>
+                <mat-form-field> 
+                    <input type="text" matInput placeholder="Direccion" name="Direccion" [(ngModel)]="Empleados.direccion" required />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Escoja un Rol</mat-label>
+                    <mat-select [(value)]="Empleados.rol">
+                      <mat-option *ngFor="let rol of rolesEmpleados" [value]="rol">
+                        {{rol}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        </form>
+        
+        <div class="form-group-row" *ngIf="!Empleados.personaId else elseBlock">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" role="button" style="height: 40px; width: 100px;"
+                    (click)="create()">Crear</button>
+                <button class="btn btn-danger" role="button" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+
+        <ng-template #elseBlock>
+            <div class="form-group-row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='update(Empleados.personaId)'>Editar</button>
+                    <button class="btn btn-danger" role="button" (click)="cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

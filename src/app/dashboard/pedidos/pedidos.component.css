@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+
+}
+
+.pointer{
+cursor: pointer;
+color: #e62b36;
+}
+.mat-form-field {
+font-size: 14px;
+width: 100%;
+}
+
+body{ 
+  background-color: #528a31;
+}

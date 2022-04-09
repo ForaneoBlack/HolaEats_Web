@@ -7,6 +7,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from './shared/shared.module';
+import { PedidosService } from './dashboard/pedidos/pedidos.service';
+import { FormComponent } from './dashboard/clientes/form.component';
+import { Form2Component } from './dashboard/empleados/form2.component';
+import { Form3Component } from './dashboard/productos/form3.component';
+import { ClientesComponent } from './dashboard/clientes/clientes.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { SwiperModule, SwiperConfigInterface,
+  SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+
 
 
 
@@ -20,12 +30,25 @@ const routes: Routes =[
   
 
 ];
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  observer: true,
+  direction: 'horizontal',
+  threshold: 50,
+  spaceBetween: 5,
+  slidesPerView: 1,
+  centeredSlides: true
+};
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    FormComponent,
+    Form2Component,
+    Form3Component,
+    
     
 
   ],
@@ -35,12 +58,19 @@ const routes: Routes =[
     FormsModule,
    SharedModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    NgbModalModule
+    
    
   ],
 
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [PedidosService, {
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG
+  }],
+  bootstrap: [AppComponent],
+  entryComponents: [ClientesComponent]
 })
 export class AppModule { }
 

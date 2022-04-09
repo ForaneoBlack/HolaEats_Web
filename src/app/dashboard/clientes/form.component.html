@@ -1,0 +1,64 @@
+<br>
+
+<div class="card bg-dark text-white" style="border-bottom: 10px; border-color:aliceblue;">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+
+        <form ngNativeValidate (ngSubmit)="create()">
+            <mat-grid-list cols="2" rowHeight="300px">
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input type="text" matInput name="cedula" placeholder="Cedula" [(ngModel)]="Cliente.cedula" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" matInput name="Nombre" placeholder="Nombre" [(ngModel)]="Cliente.nombre" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" matInput name="Apellido" placeholder="Apellido" [(ngModel)]="Cliente.apellido" required />
+                        </mat-form-field>
+
+                       
+                    </div>
+                </mat-grid-tile> 
+
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input type="email" matInput name="Correo" placeholder="Correo Electronico" [(ngModel)]="Cliente.correo" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" matInput name="Telefono" placeholder="Telefono" [(ngModel)]="Cliente.telefono" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" matInput name="Direccion" placeholder="Direccion" [(ngModel)]="Cliente.direccion" required />
+                        </mat-form-field>
+                        
+                    </div>
+                   
+    
+                </mat-grid-tile>
+            </mat-grid-list>
+            
+            
+
+            <div class="form-group-row" *ngIf="!Cliente.personaId else elseBlock">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" style="height: 40px; width: 100px;">Crear</button>
+                    <button class="btn btn-danger" role="button" (click)="cancelar()" >Cancelar</button>
+                </div>
+            </div>
+
+            <ng-template #elseBlock>
+                <div class="form-group-row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary" role="button" (click)='update(Cliente.personaId)'>Editar</button>
+                        <button class="btn btn-danger" role="button" (click)="cancelar()" >Cancelar</button>
+                    </div>
+                </div>
+            </ng-template>
+
+        </form>
+    </div>
+</div>
+<br>
