@@ -1,6 +1,6 @@
 export class Cliente {
     personaId!:number;
-    cedula!: number;
+    cedula!: String;
     nombre: String | undefined;
     apellido: string | undefined;
     correo: string | undefined;

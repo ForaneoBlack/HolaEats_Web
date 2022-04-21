@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, _MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Form2Component } from './form2.component';
+import Swal from 'sweetalert2';
 
 import { Empleados } from './empleados';
 
@@ -73,11 +74,26 @@ export class EmpleadosComponent implements OnInit {
         response => this.cargarEmpleados()
       )
     );
+    Swal.fire({
+      title: 'Estas seguro de eliminar al empleado?',
+      text: "No se podra revertir despues!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo eliminarlo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Empleado eliminado', `El empleado se a eliminado con éxito`,'error'
+        )
+      }
+    })
   }
 
   openDialog(personaId: number) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "70%";
+    dialogConfig.width = "55%";
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(Form2Component, dialogConfig);
 

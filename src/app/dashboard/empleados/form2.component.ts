@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Empleados } from './empleados';
 import { EmpleadosComponent, rolesEmpleados } from './empleados.component';
 import { EmpleadosService } from './empleados.service';
+import Swal from 'sweetalert2';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({ 
   selector: 'app-form2',
@@ -18,9 +20,21 @@ export class Form2Component implements OnInit {
   
   public titulo: String = "Crear Empleados"
 
+  form;
   constructor(private empleadosService: EmpleadosService, private router: Router, 
     private activatedRouter: ActivatedRoute,
-    public dialogRef: MatDialogRef<EmpleadosComponent>) { }
+    public dialogRef: MatDialogRef<EmpleadosComponent>,
+    private formBuilder: FormBuilder
+    ) { 
+      this.form = formBuilder.group({
+        cedula: ['', Validators.required],
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        correo: ['', Validators.required],
+        telefono: ['', Validators.required],
+        direccion: ['', Validators.required]
+      })
+    }
 
   ngOnInit(): void {
     this.cargar();
@@ -37,10 +51,15 @@ export class Form2Component implements OnInit {
     
   }
 public create(): void {
- 
-  this.empleadosService.create(this.Empleados).subscribe(
-    cancelar => this.cancelar()
-  )
+  if (this.form.valid){
+    this.empleadosService.create(this.Empleados).subscribe(
+      cancelar => this.cancelar()
+    )
+    Swal.fire('Empleado guardado', `El empleado ${this.Empleados.nombre} se a creado con éxito`,'success')
+  }else{
+    alert('Revise que los campos esten llenados correctamente')
+  }
+  
 }
 
 public update(personaId: number):void {

@@ -1,85 +1,53 @@
-<br>
+<div class="card bg-white text-dark" style="border-bottom: 10px; border-color:aliceblue;">
 
-<div class="card bg-dark text-white" style="border-bottom: 10px; border-color:aliceblue;">
-    <div class="card-header">{{titulo}}</div>
     <div class="card-body">
 
-        <form ngNativeValidate (ngSubmit)="create()">
-            
-            <!--<div class="form-group row">
-        <label for="nombre" class="col-form-label col-sm-2">IdProducto</label>
-        <div class="col-sm-4">
-            <input type="text" class="form-control" name="id_producto" [(ngModel)]="producto.id_producto" required/>
-        </div>
-    </div>-->
-
-            <br>
-
-            <div class="form-group row">
-                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre" [(ngModel)]="productos.nombre" required />
-                </div>
-            </div>
-
-            <br>
-
-            <div class="form-group row">
-                <label for="nombre" class="col-form-label col-sm-2">Categoria</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="categoria" [(ngModel)]="productos.categoria" required />
-                </div>
-            </div>
-
-            <br>
-
-            <div class="form-group row">
-                <label for="nombre" class="col-form-label col-sm-2">Descripcion</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="apellido" [(ngModel)]="productos.descripcion" required />
-                </div>
-            </div>
-
-            <br>
-
-            <div class="form-group row">
-                <label for="nombre" class="col-form-label col-sm-2">Precio</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="precio" [(ngModel)]="productos.precio" required />
-                </div>
-            </div>
-
-            <br>
-
-            <div class="form-group row">
-                <label for="nombre" class="col-form-label col-sm-2">Stock</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="stock" [(ngModel)]="productos.stock" required />
-                </div>
-            </div>
-
-            <br>
-
-            <br>
-
-
-            <div class="form-group-row" *ngIf="!productos.idProducto else elseBlock">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" style="height: 40px; width: 100px;">Crear</button>
-                    <button class="btn btn-danger" role="button" (click)="cancelar()" >Cancelar</button>
-                </div>
-            </div>
-
-            <ng-template #elseBlock>
-                <div class="form-group-row">
-                    <div class="col-sm-6">
-                        <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
-                        <button class="btn btn-danger" role="button" (click)="cancelar()" >Cancelar</button>
+        <form ngNativeValidate [formGroup]="form" (ngSubmit)="create()">
+            <mat-grid-list cols="1" rowHeight="200px">
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input type="text" formControlName="nombre" name="nombre" matInput placeholder="Nombre" [(ngModel)]="productos.nombre" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" formControlName="categoria" matInput placeholder="Categoria" name="categoria" [(ngModel)]="productos.categoria" required />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" formControlName="descripcion" matInput placeholder="Descripción" name="descripcion" [(ngModel)]="productos.descripcion" required />
+                        </mat-form-field>
+                        <mat-form-field> 
+                            <input type="text" formControlName="precio" matInput placeholder="Precio" pattern="^[0-9.]*$" name="precio" [(ngModel)]="productos.precio" required />
+                        </mat-form-field>
+                        <mat-form-field> 
+                            <input type="text" formControlName="stock" matInput placeholder="Stock" pattern="^[0-9.]*$" name="stock" [(ngModel)]="productos.stock" required />
+                        </mat-form-field>
                     </div>
-                </div>
-            </ng-template>
 
+                </mat-grid-tile>
+                <!-- <strong>{{form.value.nombre}}</strong>
+                <strong>{{form.value.categoria}}</strong>
+                <strong>{{form.value.descripcion}}</strong>
+                <strong>{{form.value.precio}}</strong>
+                <strong>{{form.value.stock}}</strong> -->
+        </mat-grid-list>
         </form>
+        
+        <div class="form-group-row" *ngIf="!productos.idProducto else elseBlock">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" role="button" style="height: 40px; width: 100px; margin-right: 15px;"
+                    (click)="create()">Crear</button>
+                <button class="btn btn-danger" role="button" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+
+        <ng-template #elseBlock>
+            <div class="form-group-row">
+                <div class="col-sm-6">
+                    <button style="margin-right:15px;" class="btn btn-primary" role="button" (click)='update(productos.idProducto)'>Editar</button>
+                    <button class="btn btn-danger" role="button" (click)="cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </ng-template>
         <form (ngSubmit)="onUpload()" novalidate enctype="multipart/form-data">
             <div>
                 <input type="file" class="custom-file-input" id="imagen" #imagenInputFile
@@ -98,4 +66,3 @@
         </form>
     </div>
 </div>
-<br>

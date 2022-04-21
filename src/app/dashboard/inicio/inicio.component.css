@@ -5,11 +5,12 @@
 }
 
 #fondo{
-    width: 90em;
+    width: 84.3em;
     height: 45em;
     background-image: url('/assets/little planet 2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     align-items: center;
+    background-attachment: scroll;
 }

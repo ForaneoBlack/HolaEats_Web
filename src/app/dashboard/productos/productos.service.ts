@@ -11,7 +11,7 @@ import { Imagen } from './imagen';
 })
 export class ProductosService {
 
-  private urlImagen:string="http://localhost:8080/cloudinary/"
+  urlImagen:string="http://localhost:8080/cloudinary/"
   private urlEndPoint:string='http://localhost:8080/api/productos'
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
   constructor(private http: HttpClient) { }
@@ -41,11 +41,12 @@ export class ProductosService {
     create(productos: Productos): Observable<Productos>{
       return this.http.post<Productos>(this.urlEndPoint, productos,{headers: this.httpHeaders})
     }
-    update(productos: Productos):Observable<Productos>{
-      return this.http.put<Productos>(this.urlEndPoint, productos)
+    update(productos: Productos, idProducto:number):Observable<Productos>{
+      return this.http.put<Productos>(this.urlEndPoint+'/'+idProducto,productos)
     }
     //eliminar
     delete(idProducto:number):Observable<Productos>{
       return this.http.delete<Productos>(this.urlEndPoint+'/'+idProducto)
     }
+    
 }

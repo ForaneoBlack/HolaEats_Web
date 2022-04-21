@@ -1,0 +1,79 @@
+<div class="card bg-white text-black" style="border-bottom: 10px; border-color: aliceblue">
+    <mat-toolbar class="card bg-dark text-white">
+        <span>Pedido</span>
+        <span class="example-spacer"></span>
+        <img src="assets/Hola-Eats_Logo.png" width="90px" height="90px" />
+    </mat-toolbar>
+
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+                <span>Id: {{ factuEnc.idFactura }} </span>
+                <br>
+                <br>
+                <span>Cliente: {{ factuEnc.persona.nombre }}
+                    {{ factuEnc.persona.apellido }}
+                </span>
+                <br>
+                <br>
+                <span>Fecha: {{ factuEnc.fecha.split("T")[0] }} </span>
+                <br>
+                <br>
+                <form>
+                    <mat-form-field class="text-white">
+                        <mat-label>Estado</mat-label>
+                        <mat-select [(value)]="factuEnc.facturaDetalle.estado">
+                            <mat-option *ngFor="let estado of estadoPedido" [value]="estado">
+                                {{ estado }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+               
+               
+    
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container"> 
+               
+                <mat-toolbar class="card bg-white text-dark">
+                    <span>Descripcion</span>
+                </mat-toolbar>
+                <div>
+                    <div>
+                        <span>{{ factuEnc.facturaDetalle.producto.idProducto }} </span>
+                        <span>{{ factuEnc.facturaDetalle.producto.nombre }} </span>
+                        <span>{{ factuEnc.facturaDetalle.producto.precio }} </span>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <mat-toolbar class="card bg-white text-dark">
+                    <span>Total: $ {{ factuEnc.total }}</span>
+                </mat-toolbar>
+    
+                <br>
+                <button class="btn btn-primary" style="margin-right: 15px" role="button"
+                (click)="update(factuEnc.facturaDetalle.idDetalle)">
+                Actualizar
+            </button>
+            <button class="btn btn-danger" role="button" (click)="cancelar()">
+                Cancelar
+            </button>
+
+               
+            </div>
+            
+
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+       
+
+   
+
+
+</div>

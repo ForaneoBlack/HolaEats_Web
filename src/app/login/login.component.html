@@ -5,17 +5,19 @@
     <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
       <img src="assets/Hola-Eats_Logo.png" width="250px" height="250px" />
     <br>
-      <h1 class="title">Iniciar Sesion</h1>
+    <br>
+      <h1 class="title">Iniciar Sesión</h1>
+      <br>
       <mat-form-field class="ancho" appearance="fill" color="accent">
         <mat-label>Usuario</mat-label>
-        <input type="text" matInput autocomplete="off" formControlName="usuario"/>
+        <input style="color: darkslategrey;" type="text" matInput autocomplete="off" formControlName="usuario"/>
       </mat-form-field>
       <mat-form-field class="ancho" appearance="fill" color="accent">
         <mat-label>Contraseña</mat-label>
-        <input type="password" matInput autocomplete="off" formControlName="contrasena"/>
+        <input style="color: darkslategrey;" type="password" matInput autocomplete="off" formControlName="contrasena"/>
       </mat-form-field>
       <br />
-      <button type="submit" class="ancho button" mat-raised-button color="accent" [disabled]="form.invalid">
+      <button type="submit" class="ancho button" mat-raised-button color="accent" style="color: black;" [disabled]="form.invalid">
         Ingresar
       </button>
     </form>

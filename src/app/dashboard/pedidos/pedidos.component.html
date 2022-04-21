@@ -8,25 +8,39 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Pedido" #input />
   </mat-form-field>
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="pedidos" >
+    <table mat-table [dataSource]="dataSource" >
       <ng-container matColumnDef="idPedido">
         <th mat-header-cell *matHeaderCellDef >Id</th>
-        <td mat-cell *matCellDef="let pedidos">{{ pedidos.idPedido }}</td>
+        <td mat-cell *matCellDef="let pedidos">{{ pedidos.idFactura }}</td>
       </ng-container>
+
       <ng-container matColumnDef="tipoPago">
         <th mat-header-cell *matHeaderCellDef>Tipo de Pago</th>
-        <td mat-cell *matCellDef="let pedidos">{{ pedidos.tipoPago }}</td>
+        <td mat-cell *matCellDef="let pedidos">{{ pedidos.forma_pago }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let pedidos">{{ pedidos.fecha.split(' ')[0] }}</td>
       </ng-container>
 
       <ng-container matColumnDef="estado">
         <th mat-header-cell *matHeaderCellDef>Estado</th>
-        <td mat-cell *matCellDef="let pedidos">{{ pedidos.estado }}</td>
+        <td mat-cell *matCellDef="let pedidos">{{ pedidos.facturaDetalle.estado }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let pedidos">{{ pedidos.total }}</td>
       </ng-container>
 
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef ></th>
         <td mat-cell *matCellDef="let pedidos;" style="text-align: center">
     
+          <a class="pointer" (click)="openDialog(pedidos.idFactura)"  matTooltip="Mostrar Pedido">
+            <mat-icon color="accent"> view_comfy </mat-icon>
+          </a>
           <a class="pointer" (click)="eliminarPedido(pedidos)" matTooltip="Eliminar Pedido">
             <mat-icon color="warn"> delete </mat-icon>
           </a>

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   error() {
-    this._snackBar.open('Usuario o Contraseña son invalidos', '', {
+    this._snackBar.open('El Usuario o Contraseña son invalidos', '', {
       duration: 3000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition

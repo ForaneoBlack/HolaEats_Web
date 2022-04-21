@@ -1,7 +1,7 @@
 .footer-dark {
   padding:50px 0;
   color:#f0f9ff;
-  background-color:#282d32;
+  background-color:black;
   position: relative;
 }
 
@@ -73,7 +73,7 @@
   border-radius:50%;
   box-shadow:0 0 0 1px rgb(150, 36, 36);
   margin:0 8px;
-  color:rgb(219, 48, 48);
+  color:rgb(207, 47, 47);
   opacity:0.75;
 }
 

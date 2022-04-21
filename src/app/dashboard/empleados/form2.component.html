@@ -1,23 +1,22 @@
-<div class="card bg-dark text-white" style="border-bottom: 10px; border-color:aliceblue;">
-    <div class="card-header">{{titulo}}</div>
+<div class="card bg-white text-dark" style="border-bottom: 10px; border-color:aliceblue;">
+    
     <div class="card-body">
 
-        <form ngNativeValidate (ngSubmit)="create()">
+        <form ngNativeValidate [formGroup]="form" (ngSubmit)="create()">
             <mat-grid-list cols="2" rowHeight="300px">
                 <mat-grid-tile>
                     <div class="controles-container">
                         <mat-form-field>
-                            <input type="text" name="cedula" matInput placeholder="Cedula"
-                                [(ngModel)]="Empleados.cedula" required />
+                            <input type="text" formControlName="cedula" minlength="10" maxlength="10" pattern="^[0-9]*$" name="cedula" matInput placeholder="Cedula" [(ngModel)]="Empleados.cedula" required />
                         </mat-form-field>
                         <mat-form-field>
-                            <input type="text" matInput placeholder="Nombre" name="nombre" [(ngModel)]="Empleados.nombre" required />
+                            <input type="text" formControlName="nombre" matInput placeholder="Nombre" pattern="[a-zA-Z ]*" name="nombre" [(ngModel)]="Empleados.nombre" required />
                         </mat-form-field>
                         <mat-form-field>
-                            <input type="text" matInput placeholder="Apellido" name="apellido" [(ngModel)]="Empleados.apellido" required />
+                            <input type="text" formControlName="apellido" matInput placeholder="Apellido" pattern="[a-zA-Z ]*" name="apellido" [(ngModel)]="Empleados.apellido" required />
                         </mat-form-field>
                         <mat-form-field> 
-                            <input type="email" matInput placeholder="Correo" name="correo" [(ngModel)]="Empleados.correo" required />
+                            <input type="email" formControlName="correo" type="email" [email]="true" matInput placeholder="Correo" name="correo" [(ngModel)]="Empleados.correo" required />
                         </mat-form-field>
                     </div>
 
@@ -27,10 +26,10 @@
             <mat-grid-tile>
                 <div class="controles-container">
                 <mat-form-field> 
-                    <input type="text" matInput placeholder="Telefono" name="Telefono" [(ngModel)]="Empleados.telefono" required />
+                    <input type="text" formControlName="telefono" minlength="10" maxlength="10" matInput placeholder="Telefono" pattern="^[0-9]*$" name="Telefono" [(ngModel)]="Empleados.telefono" required />
                 </mat-form-field>
                 <mat-form-field> 
-                    <input type="text" matInput placeholder="Direccion" name="Direccion" [(ngModel)]="Empleados.direccion" required />
+                    <input type="text" formControlName="direccion" matInput placeholder="Direccion" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]*" name="Direccion" [(ngModel)]="Empleados.direccion" required />
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Escoja un Rol</mat-label>
@@ -43,11 +42,17 @@
                 </div>
             </mat-grid-tile>
         </mat-grid-list>
+        <!-- <strong>{{form.value.cedula}}</strong>
+        <strong>{{form.value.nombre}}</strong>
+        <strong>{{form.value.apellido}}</strong>
+        <strong>{{form.value.correo}}</strong>
+        <strong>{{form.value.telefono}}</strong>
+        <strong>{{form.value.direccion}}</strong> -->
         </form>
         
         <div class="form-group-row" *ngIf="!Empleados.personaId else elseBlock">
             <div class="col-sm-6">
-                <button class="btn btn-primary" role="button" style="height: 40px; width: 100px;"
+                <button class="btn btn-primary" role="button" style="height: 40px; width: 100px; margin-right: 15px;"
                     (click)="create()">Crear</button>
                 <button class="btn btn-danger" role="button" (click)="cancelar()">Cancelar</button>
             </div>
@@ -56,7 +61,7 @@
         <ng-template #elseBlock>
             <div class="form-group-row">
                 <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" (click)='update(Empleados.personaId)'>Editar</button>
+                    <button class="btn btn-primary" style="margin-right: 15px;" role="button" (click)='update(Empleados.personaId)'>Editar</button>
                     <button class="btn btn-danger" role="button" (click)="cancelar()">Cancelar</button>
                 </div>
             </div>

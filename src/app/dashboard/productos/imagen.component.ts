@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperOptions } from 'swiper';
 import { Imagen } from './imagen';
@@ -10,6 +10,7 @@ import { ProductosService } from './productos.service';
 })
 export class ImagenComponent implements OnInit {
 
+  @Input() index: any;
   imagenes: Imagen[] = [];
 
   public config: SwiperOptions = {
@@ -29,6 +30,7 @@ export class ImagenComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.config.initialSlide = this.index;
     this.productoService.list().subscribe(
       data => {
         this.imagenes = data;

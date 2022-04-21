@@ -2,13 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #423E3E;
-    color: #fff;
-    padding-top:100px;
+    background-color: white;
+    color: #ffff;
+    padding-top:25px;
     
 }
 .title{
-    color: #fff;
+    color: black;
 }
 
 .login{
@@ -18,7 +18,7 @@
     margin: auto;
     text-align: center;
     color: #fff;
-    height: 52em;
+    height: 34.8em;
 }
 
 .ancho {

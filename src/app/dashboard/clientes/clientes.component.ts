@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ClienteService } from './cliente.service';
 import { Cliente } from './clientes';
 import { FormComponent } from './form.component';
+import Swal from 'sweetalert2';
 
 const rolCliente = ['Cliente'];
 @Component({
@@ -59,6 +60,21 @@ export class ClientesComponent implements OnInit {
         response => this.cargarClientes()
       )
     )
+    Swal.fire({
+      title: 'Estas seguro de eliminar al cliente?',
+      text: "No se podra revertir despues!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo eliminarlo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Cliente eliminado', `El cliente se a eliminado con éxito`,'error'
+        )
+      }
+    })
   }
 
   openDialog(personaId:number) {

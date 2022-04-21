@@ -4,6 +4,7 @@ import { ClienteService } from './cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ClientesComponent } from './clientes.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
